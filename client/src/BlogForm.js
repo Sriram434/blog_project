@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import axios from "axios"
 
 export const BlogForm = (props) => {
@@ -40,6 +40,13 @@ export const BlogForm = (props) => {
         }
     }
 
+    console.log(props.editValue)
+
+    useEffect(() => {
+        setTitle(props.editValue?.title)
+        setText(props.editValue?.text)
+    }, [props.editValue])
+
     return (
         <div className="modalBackground">
             <div className="modalContainer">
@@ -51,12 +58,12 @@ export const BlogForm = (props) => {
                     <label>
                         TITLE
                     </label>
-                    <input type="text" defaultValue={props.editValue ? props.editValue.title : ""} onChange={changeHandler} name="title" />
+                    <input type="text" value={title} onChange={changeHandler} name="title" />
 
                     <label>
                         TEXT
                     </label>
-                    <input type="text" defaultValue={props.editValue ? props.editValue.text : ""} onChange={changeHandler} name="text" />
+                    <input type="text" value={text} onChange={changeHandler} name="text" />
 
                 </div>
                 <div className="footer">
