@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const DB = "mongodb+srv://sriram:7cCbzMl9CyClO9AY@cluster0.ugtmvuz.mongodb.net/blog_post?retryWrites=true&w=majority"
+const DB = process.env.DATABASE
 
 mongoose.connect(DB, {
     keepAlive: true,
